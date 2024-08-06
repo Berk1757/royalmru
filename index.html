@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teya hack</title>
     <style>
         @font-face {
@@ -25,7 +26,7 @@
             text-align: center;
             width: 100%;
         }
-.game-title {
+        .game-title {
             font-family: 'Intro', Arial, sans-serif;
             font-size: 100px;
             font-weight: bold;
@@ -35,7 +36,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
-}
+        }
         .game-title2 {
             font-family: 'Intro', Arial, sans-serif;
             font-size: 50px;
@@ -46,7 +47,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
-}
+        }
         .button-container {
             display: flex;
             flex-direction: column;
@@ -74,6 +75,12 @@
         }
         .button-container img:hover {
             transform: scale(1.1);
+        }
+        /* Скрываем содержимое для больших экранов */
+        @media (min-width: 769px) {
+            body {
+                display: none; /* Скрыть весь контент на экранах больше 768px */
+            }
         }
     </style>
 </head>
