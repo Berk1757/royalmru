@@ -5,55 +5,63 @@
     <title>Интерактивная страница</title>
      <style>
         @font-face {
-            font-family: 'Intro';
-            src: url('intro.otf') format('opentype');
-        }
-         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden; /* Предотвращаем прокрутку */
-        }
-        #background-image {
-            position: fixed;   /* Фиксированное положение */
-            top: 0;            /* Прижимаем к верху страницы */
-            left: 0;           /* Прижимаем к левому краю страницы */
-            min-width: 100%;   /* Минимальная ширина 100% */
-            min-height: 100%;  /* Минимальная высота 100% */
-            width: 100%;       /* Ширина 100% */
-            height: 100%;      /* Высота 100% */
-            object-fit: cover; /* Обеспечиваем покрытие всего доступного пространства */
-            z-index: -100;     /* Отправляем изображение на задний план */
-        }
+    font-family: 'Intro';
+    src: url('intro.otf') format('opentype');
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Предотвращаем прокрутку */
+    background: gray;
+}
+
+#background-image {
+    position: fixed;   /* Фиксированное положение */
+    top: 0;            /* Прижимаем к верху страницы */
+    left: 0;           /* Прижимаем к левому краю страницы */
+    min-width: 100%;   /* Минимальная ширина 100% */
+    min-height: 100%;  /* Минимальная высота 100% */
+    width: 100%;       /* Ширина 100% */
+    height: 100%;      /* Высота 100% */
+    object-fit: cover; /* Обеспечиваем покрытие всего доступного пространства */
+    z-index: -100;     /* Отправляем изображение на задний план */
+}
+
 .back-button {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000; /* Обеспечиваем, что кнопка будет поверх всего остального контента */
-        }
-        .back-button img {
-            width: 80px;
-            height: 80px;
-        }
+    position: fixed;
+    top: 4px;          /* Уменьшено */
+    left: 4px;         /* Уменьшено */
+    z-index: 1000;    /* Обеспечиваем, что кнопка будет поверх всего остального контента */
+}
+
+.back-button img {
+    width: 32px;       /* Уменьшено */
+    height: 32px;      /* Уменьшено */
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 170%;
+    width: 68%;        /* Уменьшено */
 }
+
 .game-title {
-            font-family: 'Intro', Arial, sans-serif;
-            font-size: 115px;
-            font-weight: bold;
-            margin-bottom: 18px;
-            text-align: center;
-            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
+    font-family: 'Intro', Arial, sans-serif;
+    font-size: 46px;   /* Уменьшено */
+    font-weight: bold;
+    margin-bottom: 7px; /* Уменьшено */
+    text-align: center;
+    background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
 }
+
 @keyframes glow {
     0% { box-shadow: 0 6px 12px rgba(0,0,0,0.1), 0 0 16px 8px #ffa500; }
     25% { box-shadow: 0 6px 12px rgba(0,0,0,0.1), 0 0 16px 8px #ff5050; }
@@ -67,26 +75,26 @@
     flex-direction: column;
     align-items: center;
     background-color: #0a101e;
-    border-radius: 24px;
-    padding: 16px;
+    border-radius: 10px; /* Уменьшено */
+    padding: 6px;       /* Уменьшено */
     animation: glow 8s infinite linear;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 90px);
-    grid-template-rows: repeat(5, 90px);
-    gap: 14px;
+    grid-template-columns: repeat(5, 36px); /* Уменьшено */
+    grid-template-rows: repeat(5, 36px);    /* Уменьшено */
+    gap: 6px;         /* Уменьшено */
 }
 
 .square {
     background-color: #238fa9;
-    border-radius: 20px;
+    border-radius: 8px; /* Уменьшено */
     transition: transform 0.6s ease-in-out, background-color 1s ease;
 }
 
 .square.open {
-    transform: scale(1.2); /* Увеличение при открытии */
+    transform: scale(0.48); /* Уменьшено */
     transition: transform 0.6s ease-out;
 }
 
@@ -95,18 +103,18 @@ button {
 }
 
 button:hover, button:focus {
-    transform: translateY(-4px);
+    transform: translateY(-1.6px); /* Уменьшено */
     transition: transform 0.4s ease-out, background-color 0.6s ease;
 }
 
 button:active {
-    transform: translateY(2px);
+    transform: translateY(0.8px); /* Уменьшено */
     transition: transform 0.4s ease-out;
 }
 
 #trap-count-label {
-    margin-top: 40px;
-    font-size: 56px;
+    margin-top: 16px; /* Уменьшено */
+    font-size: 22px;  /* Уменьшено */
     color: white;
 }
 
@@ -114,21 +122,21 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 8px 0;
+    margin: 3px 0; /* Уменьшено */
 }
 
 .count-display {
-    width: 70px;
+    width: 28px; /* Уменьшено */
     text-align: center;
-    font-size: 70px;
+    font-size: 28px; /* Уменьшено */
     color: white;
-    margin: 0 24px;
+    margin: 0 9px; /* Уменьшено */
 }
 
 .icon {
     cursor: pointer;
-    width: 100px;
-    height: 100px;
+    width: 40px; /* Уменьшено */
+    height: 40px; /* Уменьшено */
 }
 
 .star {
@@ -139,7 +147,7 @@ button:active {
 
 .star.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(0.4); /* Уменьшено */
 }
 
 #modal {
@@ -148,12 +156,12 @@ button:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 520px; /* Подогнано под размеры слайдера */
-    height: 720px; /* Подогнано под размеры слайдера */
+    width: 208px;  /* Уменьшено */
+    height: 288px; /* Уменьшено */
     background: white;
-    padding: 40px;
-    border-radius: 100px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    padding: 16px; /* Уменьшено */
+    border-radius: 40px; /* Уменьшено */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Уменьшено */
     visibility: hidden; /* Скрыто по умолчанию */
     opacity: 0; /* Начальная прозрачность */
     transition: opacity 1s, visibility 1s; /* Плавная транзиция для opacity и visibility */
@@ -166,26 +174,26 @@ button:active {
 
 .close-button {
     position: absolute;
-    top: 24px;
-    right: 44px;
-    font-size: 68px;
+    top: 10px;  /* Уменьшено */
+    right: 18px; /* Уменьшено */
+    font-size: 27px; /* Уменьшено */
     color: black;
     cursor: pointer;
 }
 
 button {
     font-family: 'Intro';
-    margin-top: 40px;
-    padding: 46px 48px;
-    font-size: 36px;
+    margin-top: 16px; /* Уменьшено */
+    padding: 18px 19px; /* Уменьшено */
+    font-size: 14px; /* Уменьшено */
     text-transform: uppercase;
     color: white;
     background-image: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
     border: none;
-    border-radius: 50px;
+    border-radius: 20px; /* Уменьшено */
     cursor: pointer;
     outline: none;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
     transition: all 0.6s ease;
 
     /* Анимация дыхания */
@@ -194,56 +202,35 @@ button {
 
 button:hover {
     background-image: linear-gradient(to right, #9d50bb, #6e48aa);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Уменьшено */
 }
 
 button:active {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Уменьшено */
     transform: scale(0.96);
 }
 
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
     }
     50% {
         transform: scale(1.1);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6); /* Уменьшено */
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
     }
 }
 
-@font-face {
-    font-family: 'Intro';
-    src: url('intro.otf') format('opentype');
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: gray;
-}
-
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 170%;
-}
-
 .animated-text {
-    font-size: 48px;
+    font-size: 19px; /* Уменьшено */
     color: white;
     font-family: 'Intro';
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 16px; /* Уменьшено */
     opacity: 0;
     transition: opacity 2s ease-in-out;
 }
@@ -257,20 +244,20 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Intro';
-    font-size: 72px;
+    font-size: 28px; /* Уменьшено */
     font-weight: bold;
     color: white;
     text-align: center;
-    margin-top: -80px;
-    margin-bottom: 40px;
+    margin-top: -32px; /* Уменьшено */
+    margin-bottom: 16px; /* Уменьшено */
     opacity: 0;
     transition: opacity 4s ease-in-out;
 }
 
 .nogocio img {
-    width: 80px;
-    height: 100px;
-    margin-right: 20px;
+    width: 32px; /* Уменьшено */
+    height: 40px; /* Уменьшено */
+    margin-right: 8px; /* Уменьшено */
 }
 
 .nogocio.show {
@@ -282,8 +269,8 @@ body {
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 200%;
-    min-height: 200%;
+    min-width: 80%; /* Уменьшено */
+    min-height: 80%; /* Уменьшено */
     width: auto;
     height: auto;
     z-index: -100;
@@ -292,7 +279,7 @@ body {
     </style>
 </head>
 <body>
-    <a href="1.html" class="back-button">
+    <a href="index.html" class="back-button">
         <img src="back.png" alt="Back">
     </a>
 <img id="background-image" src="https://i.pinimg.com/736x/bc/f4/30/bcf430efac5d1f49a81956d04c132791.jpg" alt="Фоновое изображение">
