@@ -1,97 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teya hack</title>
-    <style>
-        @font-face {
-            font-family: 'Intro';
-            src: url('intro.otf') format('opentype');
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url('https://i.pinimg.com/736x/bc/f4/30/bcf430efac5d1f49a81956d04c132791.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Intro';
-            color: #8741f4;
-            text-align: center;
-        }
-        .main-container {
-            width: 90%;
-            max-width: 1200px;
-        }
-        .game-title {
-            font-family: 'Intro', Arial, sans-serif;
-            font-size: 6vw; /* Responsive font size */
-            font-weight: bold;
-            margin-bottom: 4vw;
-            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
-        }
-        .game-title2 {
-            font-family: 'Intro', Arial, sans-serif;
-            font-size: 4vw; /* Responsive font size */
-            font-weight: bold;
-            margin-bottom: 6vw;
-            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5vw; /* Responsive gap */
-        }
-        .button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5vw; /* Responsive gap */
-        }
-        .button-container a {
-            display: block;
-            width: 45%;
-            max-width: 300px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease;
-        }
-        .button-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .button-container img:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    <title>Device Redirect</title>
+    <script>
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Проверка на мобильные устройства
+            if (/android/i.test(userAgent)) {
+                // Редирект для Android устройств
+                window.location.href = "rm.html";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Редирект для iOS устройств
+                window.location.href = "m.html";
+            } else {
+                // Редирект для остальных устройств (например, десктопы)
+                window.location.href = "razr.html";
+            }
+        };
+    </script>
 </head>
 <body>
-    <div class="main-container">
-        <div class="game-title">TEYA HACK V2.5</div>
-        <div class="game-title2">Выберите игру</div>
-        <div class="button-container">
-            <div class="button-row">
-                <a href="bp.html"><img src="pirates.png" alt="Button 1"></a>
-                <a href="rm.html"><img src="rmines.png" alt="Button 2"></a>
-            </div>
-            <div class="button-row">
-                <a href="m.html"><img src="mines.png" alt="Button 3"></a>
-                <a href="razr.html"><img src="lucky.png" alt="Button 4"></a>
-            </div>
-        </div>
-    </div>
+    <!-- Ваше содержимое страницы -->
 </body>
 </html>
