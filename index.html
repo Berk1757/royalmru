@@ -11,10 +11,10 @@
             // Проверка на мобильные устройства
             if (/android/i.test(userAgent)) {
                 // Редирект для Android устройств
-                window.location.href = "ios.html";
+                window.location.href = "android.html";
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 // Редирект для iOS устройств
-                window.location.href = "android.html";
+                window.location.href = "ios.html";
             } else {
                 // Редирект для остальных устройств (например, десктопы)
                 window.location.href = "android.html";
