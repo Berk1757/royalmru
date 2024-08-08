@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>Kafatasları</title>
+    <style>
+        @font-face {
+            font-family: 'Intro';
+            src: url('intro.otf') format('opentype'); /* Убедитесь, что путь правильный */
+        }
+        body {
+            background: url('https://i.pinimg.com/736x/bc/f4/30/bcf430efac5d1f49a81956d04c132791.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            height: 100%;
+            overflow: auto;
+            font-family: 'Intro', sans-serif;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 28px; /* Уменьшено на 30% */
+            width: 100%;
+        }
+        .game-title {
+            font-family: 'Intro', Arial, sans-serif;
+            font-size: 30px; /* Уменьшено на 30% */
+            font-weight: bold;
+            margin-bottom: 13px; /* Уменьшено на 30% */
+            text-align: center;
+            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 168px; /* Уменьшено на 30% */
+        }
+        .container img {
+            width: 77px; /* Уменьшено на 30% */
+            margin: -2px; /* Уменьшено на 30% */
+            transition: transform 0.5s cubic-bezier(0.32, 0.64, 0.45, 1);
+        }
+        .button-container, .input-container {
+            text-align: center;
+            margin-top: 28px; /* Уменьшено на 30% */
+        }
+        #message {
+            text-align: center;
+            margin-top: -132px; /* Уменьшено на 30% */
+            font-size: 21px; /* Уменьшено на 30% */
+            color: white;
+            font-family: 'Intro', sans-serif;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 35px; /* Уменьшено на 30% */
+        }
+        #modal.show {
+            display: flex;
+            opacity: 1;
+            transition: opacity 0.5s linear;
+        }
+        .modal-content {
+            background: white;
+            padding: 17.5px; /* Уменьшено на 30% */
+            border-radius: 35px; /* Уменьшено на 30% */
+            width: 210px; /* Уменьшено на 30% */
+            box-shadow: 0 0 10.5px rgba(0, 0, 0, 0.2), 0 7px 14px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: scale(0.63); /* Уменьшено на 30% */
+            transition: transform 0.3s ease-out;
+        }
+        .modal-content:hover {
+            transform: scale(0.735); /* Уменьшено на 30% */
+        }
+        @keyframes fadeInModal {
+            from {
+                transform: translateY(-14px); /* Уменьшено на 30% */
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .close-button {
+            position: absolute;
+            top: 7px; /* Уменьшено на 30% */
+            right: 7px; /* Уменьшено на 30% */
+            font-size: 21px; /* Уменьшено на 30% */
+            color: black;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 56%; /* Уменьшено на 30% */
+            padding: 8.4px; /* Уменьшено на 30% */
+            margin-top: 10.5px; /* Уменьшено на 30% */
+            border: 1.4px solid #ccc; /* Уменьшено на 30% */
+            border-radius: 5.6px; /* Уменьшено на 30% */
+            background: white;
+            box-shadow:
+                inset 0 2.8px 4.2px rgba(255, 255, 255, 0.3),
+                inset 0 -2.8px 4.2px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            outline: none;
+            color: #333;
+        }
+        input[type="text"]:focus {
+            border-color: #a044ff;
+            box-shadow:
+                inset 0 2.8px 4.2px rgba(255, 255, 255, 0.5),
+                0 0 10.5px rgba(160, 68, 255, 0.75);
+        }
+        input[type="text"]:hover {
+            border-color: #a044ff;
+            background: linear-gradient(to right, #e6e6e6, #ffffff);
+        }
+        .modal-button {
+            padding: 7px 14px; /* Уменьшено на 30% */
+            margin-top: 28px; /* Уменьшено на 30% */
+            font-size: 8.4px; /* Уменьшено на 30% */
+            color: white;
+            background: linear-gradient(45deg, #6a3093, #a044ff);
+            border: none;
+            border-radius: 3.5px; /* Уменьшено на 30% */
+            box-shadow: 0 5.6px 11.2px rgba(0, 0, 0, 0.2), 0 3.5px 7px #4a2379;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: auto;
+            font-family: 'Intro', sans-serif;
+        }
+        .modal-button:hover {
+            background: linear-gradient(45deg, #a044ff, #6a3093);
+            transform: translateY(-2.1px); /* Уменьшено на 30% */
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.4), 0 4.9px 9.8px #4a2379;
+        }
+        .modal-button:active {
+            transform: translateY(0.7px); /* Уменьшено на 30% */
+            box-shadow: 0 1.4px 2.8px rgba(0, 0, 0, 0.1), 0 0.7px 1.4px #4a2379;
+        }
+        .back-button img {
+            width: 24.5px; /* Уменьшено на 30% */
+            height: 24.5px; /* Уменьшено на 30% */
+        }
+        .start-button {
+            font-size: 9.8px; /* Уменьшено на 30% */
+            font-weight: bold;
+            padding: 15.4px 22.4px; /* Уменьшено на 30% */
+            width: 155px; /* Уменьшено на 30% */
+            border-radius: 16.1px; /* Уменьшено на 30% */
+            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+            font-family: 'Intro', sans-serif;
+            border: none;
+            animation: pulse 4s infinite;
+        }
+        .start-button:hover {
+            background: linear-gradient(145deg, #b31217 0%, #e95d2b 100%);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.92);
+                box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+            }
+            50% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            }
+            100% {
+                transform: scale(0.92);
+                box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px); /* Уменьшено на 30% */
+            }
+        }
+        @keyframes backgroundShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <div class="game-title">Kafatasları</div>
+            <div class="input-container">
+                <input type="text" id="registration-id" placeholder="ID регистрации">
+                <button class="start-button" onclick="showModal()">Start</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="hideModal()">×</button>
+            <p id="message">Сначала начни игру и получи ID регистрации</p>
+            <button class="modal-button" onclick="getRegistrationId()">Получить ID</button>
+        </div>
+    </div>
+    <script>
+        function showModal() {
+            document.getElementById('modal').classList.add('show');
+        }
+        function hideModal() {
+            document.getElementById('modal').classList.remove('show');
+        }
+        function getRegistrationId() {
+            // Имитация получения ID регистрации
+            document.getElementById('message').innerText = 'ID регистрации: ' + Math.floor(Math.random() * 1000000);
+        }
+    </script>
+</body>
+</html>
