@@ -5,63 +5,55 @@
     <title>Интерактивная страница</title>
      <style>
         @font-face {
-    font-family: 'Intro';
-    src: url('intro.otf') format('opentype');
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden; /* Предотвращаем прокрутку */
-    background: gray;
-}
-
-#background-image {
-    position: fixed;   /* Фиксированное положение */
-    top: 0;            /* Прижимаем к верху страницы */
-    left: 0;           /* Прижимаем к левому краю страницы */
-    min-width: 100%;   /* Минимальная ширина 100% */
-    min-height: 100%;  /* Минимальная высота 100% */
-    width: 100%;       /* Ширина 100% */
-    height: 100%;      /* Высота 100% */
-    object-fit: cover; /* Обеспечиваем покрытие всего доступного пространства */
-    z-index: -100;     /* Отправляем изображение на задний план */
-}
-
+            font-family: 'Intro';
+            src: url('intro.otf') format('opentype');
+        }
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Предотвращаем прокрутку */
+        }
+        #background-image {
+            position: fixed;   /* Фиксированное положение */
+            top: 0;            /* Прижимаем к верху страницы */
+            left: 0;           /* Прижимаем к левому краю страницы */
+            min-width: 100%;   /* Минимальная ширина 100% */
+            min-height: 100%;  /* Минимальная высота 100% */
+            width: 100%;       /* Ширина 100% */
+            height: 100%;      /* Высота 100% */
+            object-fit: cover; /* Обеспечиваем покрытие всего доступного пространства */
+            z-index: -100;     /* Отправляем изображение на задний план */
+        }
 .back-button {
-    position: fixed;
-    top: 4px;          /* Уменьшено */
-    left: 4px;         /* Уменьшено */
-    z-index: 1000;    /* Обеспечиваем, что кнопка будет поверх всего остального контента */
-}
-
-.back-button img {
-    width: 32px;       /* Уменьшено */
-    height: 32px;      /* Уменьшено */
-}
-
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000; /* Обеспечиваем, что кнопка будет поверх всего остального контента */
+        }
+        .back-button img {
+            width: 80px;
+            height: 80px;
+        }
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 68%;        /* Уменьшено */
+    width: 170%;
 }
-
 .game-title {
-    font-family: 'Intro', Arial, sans-serif;
-    font-size: 46px;   /* Уменьшено */
-    font-weight: bold;
-    margin-bottom: 7px; /* Уменьшено */
-    text-align: center;
-    background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
+            font-family: 'Intro', Arial, sans-serif;
+            font-size: 115px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            text-align: center;
+            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
 }
-
 @keyframes glow {
     0% { box-shadow: 0 6px 12px rgba(0,0,0,0.1), 0 0 16px 8px #ffa500; }
     25% { box-shadow: 0 6px 12px rgba(0,0,0,0.1), 0 0 16px 8px #ff5050; }
@@ -75,26 +67,26 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #0a101e;
-    border-radius: 10px; /* Уменьшено */
-    padding: 6px;       /* Уменьшено */
+    border-radius: 24px;
+    padding: 16px;
     animation: glow 8s infinite linear;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 36px); /* Уменьшено */
-    grid-template-rows: repeat(5, 36px);    /* Уменьшено */
-    gap: 6px;         /* Уменьшено */
+    grid-template-columns: repeat(5, 90px);
+    grid-template-rows: repeat(5, 90px);
+    gap: 14px;
 }
 
 .square {
     background-color: #238fa9;
-    border-radius: 8px; /* Уменьшено */
+    border-radius: 20px;
     transition: transform 0.6s ease-in-out, background-color 1s ease;
 }
 
 .square.open {
-    transform: scale(0.48); /* Уменьшено */
+    transform: scale(1.2); /* Увеличение при открытии */
     transition: transform 0.6s ease-out;
 }
 
@@ -103,18 +95,18 @@ button {
 }
 
 button:hover, button:focus {
-    transform: translateY(-1.6px); /* Уменьшено */
+    transform: translateY(-4px);
     transition: transform 0.4s ease-out, background-color 0.6s ease;
 }
 
 button:active {
-    transform: translateY(0.8px); /* Уменьшено */
+    transform: translateY(2px);
     transition: transform 0.4s ease-out;
 }
 
 #trap-count-label {
-    margin-top: 16px; /* Уменьшено */
-    font-size: 22px;  /* Уменьшено */
+    margin-top: 40px;
+    font-size: 56px;
     color: white;
 }
 
@@ -122,21 +114,21 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 3px 0; /* Уменьшено */
+    margin: 8px 0;
 }
 
 .count-display {
-    width: 28px; /* Уменьшено */
+    width: 70px;
     text-align: center;
-    font-size: 28px; /* Уменьшено */
+    font-size: 70px;
     color: white;
-    margin: 0 9px; /* Уменьшено */
+    margin: 0 24px;
 }
 
 .icon {
     cursor: pointer;
-    width: 40px; /* Уменьшено */
-    height: 40px; /* Уменьшено */
+    width: 100px;
+    height: 100px;
 }
 
 .star {
@@ -147,7 +139,7 @@ button:active {
 
 .star.visible {
     opacity: 1;
-    transform: scale(0.4); /* Уменьшено */
+    transform: scale(1);
 }
 
 #modal {
@@ -156,12 +148,12 @@ button:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 208px;  /* Уменьшено */
-    height: 288px; /* Уменьшено */
+    width: 520px; /* Подогнано под размеры слайдера */
+    height: 720px; /* Подогнано под размеры слайдера */
     background: white;
-    padding: 16px; /* Уменьшено */
-    border-radius: 40px; /* Уменьшено */
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Уменьшено */
+    padding: 40px;
+    border-radius: 100px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     visibility: hidden; /* Скрыто по умолчанию */
     opacity: 0; /* Начальная прозрачность */
     transition: opacity 1s, visibility 1s; /* Плавная транзиция для opacity и visibility */
@@ -174,26 +166,26 @@ button:active {
 
 .close-button {
     position: absolute;
-    top: 10px;  /* Уменьшено */
-    right: 18px; /* Уменьшено */
-    font-size: 27px; /* Уменьшено */
+    top: 24px;
+    right: 44px;
+    font-size: 68px;
     color: black;
     cursor: pointer;
 }
 
 button {
     font-family: 'Intro';
-    margin-top: 16px; /* Уменьшено */
-    padding: 18px 19px; /* Уменьшено */
-    font-size: 14px; /* Уменьшено */
+    margin-top: 40px;
+    padding: 46px 48px;
+    font-size: 36px;
     text-transform: uppercase;
     color: white;
     background-image: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
     border: none;
-    border-radius: 20px; /* Уменьшено */
+    border-radius: 50px;
     cursor: pointer;
     outline: none;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     transition: all 0.6s ease;
 
     /* Анимация дыхания */
@@ -202,35 +194,56 @@ button {
 
 button:hover {
     background-image: linear-gradient(to right, #9d50bb, #6e48aa);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Уменьшено */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 button:active {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Уменьшено */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transform: scale(0.96);
 }
 
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
     50% {
         transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6); /* Уменьшено */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Уменьшено */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 }
 
+@font-face {
+    font-family: 'Intro';
+    src: url('intro.otf') format('opentype');
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: gray;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170%;
+}
+
 .animated-text {
-    font-size: 19px; /* Уменьшено */
+    font-size: 48px;
     color: white;
     font-family: 'Intro';
     text-align: center;
-    margin-bottom: 16px; /* Уменьшено */
+    margin-bottom: 40px;
     opacity: 0;
     transition: opacity 2s ease-in-out;
 }
@@ -244,20 +257,20 @@ button:active {
     align-items: center;
     justify-content: center;
     font-family: 'Intro';
-    font-size: 28px; /* Уменьшено */
+    font-size: 72px;
     font-weight: bold;
     color: white;
     text-align: center;
-    margin-top: -32px; /* Уменьшено */
-    margin-bottom: 16px; /* Уменьшено */
+    margin-top: -80px;
+    margin-bottom: 40px;
     opacity: 0;
     transition: opacity 4s ease-in-out;
 }
 
 .nogocio img {
-    width: 32px; /* Уменьшено */
-    height: 40px; /* Уменьшено */
-    margin-right: 8px; /* Уменьшено */
+    width: 80px;
+    height: 100px;
+    margin-right: 20px;
 }
 
 .nogocio.show {
@@ -269,8 +282,8 @@ button:active {
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 80%; /* Уменьшено */
-    min-height: 80%; /* Уменьшено */
+    min-width: 200%;
+    min-height: 200%;
     width: auto;
     height: auto;
     z-index: -100;
