@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -7,225 +7,225 @@
     <link href="../css?family=Baloo+Thambi" rel="stylesheet">
     <style>
         @font-face {
-            font-family: 'Intro';
-            src: url('intro.otf') format('opentype'); /* Укажите правильный путь к файлу */
-        }
-        body, html {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden; /* Избегаем полос прокрутки */
-        }
-        .container {
-            text-align: center;
-            margin-top: 14px; /* Уменьшено на 30% */
-        }
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -100;
-            background: url('https://i.pinimg.com/736x/bc/f4/30/bcf430efac5d1f49a81956d04c132791.jpg') no-repeat center center;
-            background-size: cover;
-        }
-        .game-board {
-            display: flex;
-            flex-wrap: wrap;
-            width: 214px; /* Уменьшено на 30% */
-            margin: 12.6px auto; /* Уменьшено на 30% */
-            padding: 6.3px; /* Уменьшено на 30% */
-            border-radius: 7.56px; /* Уменьшено на 30% */
-            background-color: #f0f0f0;
-            box-shadow: 0 7.56px 15.12px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 50%, #89f7fe 100%);
-            background-size: 140% 140%;
-            animation: gradientShift 8s ease-in-out infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% {
-                background-position: 100% 50%;
-            }
-            50% {
-                background-position: 0% 50%;
-            }
-        }
+    font-family: 'Intro';
+    src: url('intro.otf') format('opentype'); /* Укажите правильный путь к файлу */
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Избегаем полос прокрутки */
+}
+.container {
+    text-align: center;
+    margin-top: 16px; /* Уменьшено на 20% */
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    background: url('https://i.pinimg.com/736x/bc/f4/30/bcf430efac5d1f49a81956d04c132791.jpg') no-repeat center center;
+    background-size: cover;
+}
+.game-board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 244.8px; /* Уменьшено на 20% */
+    margin: 14.4px auto; /* Уменьшено на 20% */
+    padding: 7.2px; /* Уменьшено на 20% */
+    border-radius: 8.6px; /* Уменьшено на 20% */
+    background-color: #f0f0f0;
+    box-shadow: 0 8.6px 17.3px rgba(0, 0, 0, 0.3); /* Уменьшено на 20% */
+    background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 50%, #89f7fe 100%);
+    background-size: 160% 160%; /* Уменьшено на 20% */
+    animation: gradientShift 8s ease-in-out infinite;
+}
 
-        @keyframes fadeInRow {
-            from {
-                opacity: 0;
-                transform: translateY(21px); /* Уменьшено на 30% */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 80% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+}
 
-        .row {
-            display: flex;
-            width: 100%;
-            animation: fadeInRow 0.5s ease-out forwards; /* Применяем анимацию к каждой строке */
-        }
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(24px); /* Уменьшено на 20% */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .square {
-            opacity: 0;
-            width: 31.5px; /* Уменьшено на 30% */
-            height: 31.5px; /* Уменьшено на 30% */
-            background-color: #fff;
-            margin: 1.89px; /* Уменьшено на 30% */
-            border-radius: 7.56px; /* Уменьшено на 30% */
-            box-shadow: inset 0 0.63px 1.89px rgba(0, 0, 0, 0.2), 0 1.26px 2.52px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            animation: fadeInOpacity 0.5s forwards;
-        }
-        @keyframes fadeInOpacity {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .square.active {
-            transform: scale(0.784) translateY(-1.4px); /* Уменьшено на 30% */
-            transition: transform 0.5s ease; /* Переход только для трансформации */
-            background-image: linear-gradient(to top left, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 56%; /* Уменьшено на 30% */
-            box-shadow: 0 0 10.5px rgba(0, 0, 0, 0.5);
-        }
-        .square.dim {
-            opacity: 0.5; /* Затемнение неактивных квадратов */
-        }
-        .play-buttons-container {
-            display: flex;
-            justify-content: space-around;
-            width: 214px; /* Уменьшено на 30% */
-            margin-top: 12.6px; /* Уменьшено на 30% */
-        }
-        .reset-button, .play-button {
-            font-size: 10.08px; /* Уменьшено на 30% */
-            font-weight: bold;
-            padding: 5.46px 24.22px; /* Уменьшено на 30% */
-            width: 81.9px; /* Уменьшено на 30% */
-            border-radius: 15.75px; /* Уменьшено на 30% */
-            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-        }
-        .reset-button:active, .play-button:active {
-            box-shadow: 0 2.1px #d35400, 0 -2.6px #f6d365 inset; /* Сжатие при нажатии */
-            transform: translateY(1.4px);
-        }
-        .square.active {
-            background-image: url('step.svg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-        }
+.row {
+    display: flex;
+    width: 100%;
+    animation: fadeInRow 0.5s ease-out forwards; /* Применяем анимацию к каждой строке */
+}
 
-        .game-title {
-            font-family: 'Intro', Arial, sans-serif;
-            font-size: 28px; /* Уменьшено на 30% */
-            font-weight: bold;
-            margin-bottom: 12.6px; /* Уменьшено на 30% */
-            text-align: center;
-            background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-7px); /* Уменьшено на 30% */
-            }
-        }
+.square {
+    opacity: 0;
+    width: 36px; /* Уменьшено на 20% */
+    height: 36px; /* Уменьшено на 20% */
+    background-color: #fff;
+    margin: 2.2px; /* Уменьшено на 20% */
+    border-radius: 8.6px; /* Уменьшено на 20% */
+    box-shadow: inset 0 0.72px 2.2px rgba(0, 0, 0, 0.2), 0 1.44px 2.9px rgba(0, 0, 0, 0.3); /* Уменьшено на 20% */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: fadeInOpacity 0.5s forwards;
+}
+@keyframes fadeInOpacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.square.active {
+    transform: scale(0.9) translateY(-1.6px); /* Уменьшено на 20% */
+    transition: transform 0.5s ease; /* Переход только для трансформации */
+    background-image: linear-gradient(to top left, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 64%; /* Уменьшено на 20% */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5); /* Уменьшено на 20% */
+}
+.square.dim {
+    opacity: 0.5; /* Затемнение неактивных квадратов */
+}
+.play-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 244.8px; /* Уменьшено на 20% */
+    margin-top: 14.4px; /* Уменьшено на 20% */
+}
+.reset-button, .play-button {
+    font-size: 11.5px; /* Уменьшено на 20% */
+    font-weight: bold;
+    padding: 6.2px 27.7px; /* Уменьшено на 20% */
+    width: 93.6px; /* Уменьшено на 20% */
+    border-radius: 18px; /* Уменьшено на 20% */
+    background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+.reset-button:active, .play-button:active {
+    box-shadow: 0 2.4px #d35400, 0 -2.4px #f6d365 inset; /* Уменьшено на 20% */
+    transform: translateY(1.6px); /* Уменьшено на 20% */
+}
+.square.active {
+    background-image: url('step.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
 
-        .notification {
-            display: none;
-            position: fixed;
-            top: 14%; /* Уменьшено на 30% */
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 14px; /* Уменьшено на 30% */
-            border-radius: 10.5px; /* Уменьшено на 30% */
-            background: #ffffff;
-            box-shadow: 0 3.5px 10.5px rgba(0,0,0,0.3);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.5s, top 0.5s;
-            font-family: 'Intro', Arial, sans-serif;
-        }
+.game-title {
+    font-family: 'Intro', Arial, sans-serif;
+    font-size: 32px; /* Уменьшено на 20% */
+    font-weight: bold;
+    margin-bottom: 14.4px; /* Уменьшено на 20% */
+    text-align: center;
+    background: -webkit-linear-gradient(120deg, #ff5050 0%, #66a6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: float 6s infinite ease-in-out, backgroundShift 10s infinite linear;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px); /* Уменьшено на 20% */
+    }
+}
 
-        .notification-content {
-            text-align: center;
-        }
+.notification {
+    display: none;
+    position: fixed;
+    top: 16%; /* Уменьшено на 20% */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px; /* Уменьшено на 20% */
+    border-radius: 12px; /* Уменьшено на 20% */
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Уменьшено на 20% */
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s, top 0.5s;
+    font-family: 'Intro', Arial, sans-serif;
+}
 
-        .notification-text {
-            font-size: 12.6px; /* Уменьшено на 30% */
-            color: #333;
-            font-family: 'Intro', sans-serif;
-            margin-bottom: 14px;  /* Добавляем отступ до кнопки */
-        }
+.notification-content {
+    text-align: center;
+}
 
-        .notification button {
-            padding: 7px 14px; /* Уменьшено на 30% */
-            font-size: 11.2px; /* Уменьшено на 30% */
-            border: none;
-            border-radius: 7px; /* Уменьшено на 30% */
-            background-color: #66a6ff;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-family: 'Intro', sans-serif;
-        }
+.notification-text {
+    font-size: 14.4px; /* Уменьшено на 20% */
+    color: #333;
+    font-family: 'Intro', sans-serif;
+    margin-bottom: 16px; /* Уменьшено на 20% */
+}
 
-        .notification button:hover {
-            background-color: #5591cc;
-        }
+.notification button {
+    padding: 8px 16px; /* Уменьшено на 20% */
+    font-size: 12.8px; /* Уменьшено на 20% */
+    border: none;
+    border-radius: 8px; /* Уменьшено на 20% */
+    background-color: #66a6ff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Intro', sans-serif;
+}
 
-        .back-button {
-            position: absolute;
-            top: 7px; /* Уменьшено на 30% */
-            left: 7px; /* Уменьшено на 30% */
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
+.notification button:hover {
+    background-color: #5591cc;
+}
 
-        .back-button img {
-            width: 24.5px; /* Уменьшено на 30% */
-            height: 24.5px; /* Уменьшено на 30% */
-        }
+.back-button {
+    position: absolute;
+    top: 8px; /* Уменьшено на 20% */
+    left: 8px; /* Уменьшено на 20% */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button img {
+    width: 28px; /* Уменьшено на 20% */
+    height: 28px; /* Уменьшено на 20% */
+}
     </style>
 </head>
 <body>
     <div class="background"></div>
-    <a href="index.html" class="back-button">
+    <a href="android.html" class="back-button">
         <img src="back.png" alt="Back">
     </a>
     <div class="game-title" style="
     margin-top: 0px;
-    margin-bottom: 77px;">Royal mines</div>
+    margin-bottom: 110px;">Royal mines</div>
     <div class="game-board" id="gameBoard"></div>
     <div class="play-buttons-container">
         <button class="reset-button">
-            <img src="pere.png" alt="Pere icon" style="width: 70%; height: 70%;">
+            <img src="pere.png" alt="Pere icon" style="width: 100%; height: 100%;">
         </button>
         <button class="play-button">
-            <img src="play.png" alt="Play icon" style="width: 56%; height: 56%;">
+            <img src="play.png" alt="Play icon" style="width: 80%; height: 80%;">
         </button>
     </div>
     <div id="notification" class="notification">
@@ -347,10 +347,10 @@
             document.getElementById('not-sound').play();
             const notification = document.getElementById('notification');
             notification.style.display = 'block';
-            notification.style.top = '7%'; /* Уменьшено на 30% */
+            notification.style.top = '10%';
             setTimeout(() => {
                 notification.style.opacity = '1';
-                notification.style.top = '14%'; /* Уменьшено на 30% */
+                notification.style.top = '20%';
             }, 10);
         }
 
@@ -358,7 +358,7 @@
             document.getElementById('cl-sound').play();
             const notification = document.getElementById('notification');
             notification.style.opacity = '0';
-            notification.style.top = '7%'; /* Уменьшено на 30% */
+            notification.style.top = '10%';
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 500);
