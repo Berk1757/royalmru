@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Redirect</title>
+    <script>
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Проверка на мобильные устройства
+            if (/android/i.test(userAgent)) {
+                // Редирект для Android устройств
+                window.location.href = "android.html";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Редирект для iOS устройств
+                window.location.href = "ios.html";
+            } else {
+                // Редирект для остальных устройств (например, десктопы)
+                window.location.href = "android.html";
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- Ваше содержимое страницы -->
+</body>
+</html>
